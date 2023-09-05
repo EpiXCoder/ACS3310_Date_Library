@@ -1,32 +1,21 @@
-D - Custom Date Library
+# JS Date Fairy
 =======================
 
-`D` is a minimalistic, user-friendly custom date library that enhances the native JavaScript Date object with more accessible methods and human-readable outputs.
-
-Table of Contents
------------------
-
--   [Installation](https://chat.openai.com/#installation)
--   [Usage](https://chat.openai.com/#usage)
--   [API Documentation](https://chat.openai.com/#api-documentation)
--   [Examples](https://chat.openai.com/#examples)
--   [Contributing](https://chat.openai.com/#contributing)
--   [License](https://chat.openai.com/#license)
+JS Date Fairy is a minimalistic, user-friendly custom date library that enhances the native JavaScript Date object with more accessible methods and human-readable outputs.
 
 Installation
 ------------
 
 Using npm:
-
-bashCopy code
-
-`npm install your-package-name`
+```
+npm install your-package-name
+```
 
 Using yarn:
 
-bashCopy code
-
-`yarn add your-package-name`
+```
+yarn add your-package-name
+```
 
 Usage
 -----
@@ -35,10 +24,12 @@ Here's a basic usage example:
 
 javascriptCopy code
 
-`const D = require('your-package-name');
+```
+const D = require('your-package-name');
 
 const myDate = new D(2023, 4, 6);
-console.log(myDate.year);  // Outputs: 2023`
+console.log(myDate.year);  // Outputs: 2023
+```
 
 API Documentation
 -----------------
@@ -63,6 +54,21 @@ API Documentation
 ### Methods
 
 -   format(mask = 'Y M D'): Format the date according to the provided mask.
+  >* 'Y' -> 2019 (Year full)
+  >* 'y' -> 19 (Year short)
+  >* 'M' -> July (Month full)
+  >* 'm' -> Jul (Month short)
+  >* 'D' -> 01 (date padded)
+  >* 'd' -> 1 (date)
+  >* 'L' -> Monday
+  >* 'l' -> Mon
+  >* '#' -> 1st (date with ordinal suffix: st, nd, rd or th)
+  >* 'H' -> 05 (Hours padded)
+  >* 'h' -> 5 (Hours)
+  >* 'I' -> 08 (Minutes padded)
+  >* 'i' -> 8 (Minutes)
+  >* 'S' -> 04 (Seconds padded)
+  >* 's' -> 4 (Seconds)
 -   getOrdinal(n): Returns the ordinal representation of a number.
 -   when(): Provides a human-readable description of 'when' a date will occur relative to now.
 
@@ -71,50 +77,45 @@ Examples
 
 ### Creating a Date Object
 
-javascriptCopy code
-
-`const dateObj = new D(2023, 4, 6);`
+```javascript
+const dateObj = new D(2023, 4, 6);
+```
 
 ### Accessing Properties
 
-javascriptCopy code
-
-`console.log(dateObj.year);  // 2023
+```javascript
+console.log(dateObj.year);  // 2023
 console.log(dateObj.yr);    // 23
 console.log(dateObj.month); // May
 console.log(dateObj.mon);   // May
 console.log(dateObj.day);   // Thursday
 console.log(dateObj.dy);    // Thu
-console.log(dateObj.date);  // 6`
-
+console.log(dateObj.date);  // 6
+```
 ### Using Methods
 
 1.  format()
 
-javascriptCopy code
-
-`console.log(dateObj.format('Y-M-D'));          // 2023-May-06
+```javascript
+console.log(dateObj.format('Y-M-D'));          // 2023-May-06
 console.log(dateObj.format('D/M/y'));          // 06/May/23
-console.log(dateObj.format('l, # M, Y'));      // Thursday, 6th May, 2023`
-
+console.log(dateObj.format('l, # M, Y'));      // Thursday, 6th May, 2023
+```
 1.  getOrdinal()
 
-javascriptCopy code
+```javascript
 
-`console.log(dateObj.getOrdinal(1));    // 1st
-console.log(dateObj.getOrdinal(22));   // 22nd`
+console.log(dateObj.getOrdinal(1));    // 1st
+console.log(dateObj.getOrdinal(22));   // 22nd
+```
 
 1.  when()
 
-javascriptCopy code
+```javascript
 
-`const pastDate = new D(2021, 1, 1);
+const pastDate = new D(2021, 1, 1);
 console.log(pastDate.when());   // Outputs: 2 years, 8 months ago (example)
 
 const futureDate = new D(2024, 1, 1);
-console.log(futureDate.when()); // Outputs: 4 months from now (example)`
-
-Contributing
-------------
-
-Contributions are always welcome! Please see the [contributing guidelines](https://chat.openai.com/CONTRIBUTING.md) for more details.
+console.log(futureDate.when()); // Outputs: 4 months from now (example)
+```
