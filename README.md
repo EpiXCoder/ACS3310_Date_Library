@@ -3,6 +3,8 @@
 ## D
 
 Custom Date Library Class
+![version](https://img.shields.io/npm/v/jsdatefairy.svg)
+![downloads](https://img.shields.io/npm/dm/jsdatefairy.svg)
 
 ### Examples
 
