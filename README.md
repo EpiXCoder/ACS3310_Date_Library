@@ -1,6 +1,6 @@
 # JS Date Fairy
-![version](https://img.shields.io/npm/v/jsdatefairy.svg)
-![downloads](https://img.shields.io/npm/dm/jsdatefairy.svg)
+![version](https://img.shields.io/npm/v/js-date-fairy.svg)
+![downloads](https://img.shields.io/npm/dm/js-date-fairy.svg)
 
 JS Date Fairy is a minimalistic, user-friendly custom date library that enhances the native JavaScript Date object with more accessible methods and human-readable outputs.
 
@@ -9,13 +9,13 @@ Installation
 
 Using npm:
 ```
-npm install your-package-name
+npm install js-date-fairy
 ```
 
 Using yarn:
 
 ```
-yarn add your-package-name
+yarn add js-date-fairy
 ```
 
 Usage
@@ -24,7 +24,7 @@ Usage
 Here's a basic usage example:
 
 ```javascript
-const D = require('your-package-name');
+const D = require('js-date-fairy');
 
 const myDate = new D(2023, 4, 6);
 console.log(myDate.year);  // Outputs: 2023

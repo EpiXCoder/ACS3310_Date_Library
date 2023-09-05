@@ -204,14 +204,3 @@ class D {
 
 module.exports = D;
 
-// Testing
-
-// const d1 = new D(2023,4,4);
-// console.log(d1.when()); 
-
-// const d2 = new D(2023, 4, 6);
-// console.log(d2.when());
-
-// const d3 = new D();
-// console.log(d3.when()); 
-// console.log(d3.format('Y-M-D h:I:S'));

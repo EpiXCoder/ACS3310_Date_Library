@@ -1,7 +1,7 @@
 {
-  "name": "datelibrary",
+  "name": "js-date-library",
   "version": "1.0.0",
-  "description": "A date library",
+  "description": "A JS date library",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -9,8 +9,30 @@
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "date",
+    "time",
+    "format",
+    "calendar",
+    "datetime",
+    "formatter",
+    "month",
+    "day",
+    "year",
+    "ordinal",
+    "date-library",
+    "date-manipulation",
+    "timestamp",
+    "date-format",
+    "time-format",
+    "relative-date",
+    "human-readable-date",
+    "javascript-date",
+    "date-enhancements",
+    "date-utilities",
+    "time-utilities"
+  ],
+  "author": "Vithusha Ravirajan <vithusha.ravirajan@gmail.com> (http://www.github.com/EpiXCoder)",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.6.4"
