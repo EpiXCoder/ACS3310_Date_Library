@@ -30,21 +30,21 @@ Returns **[string][32]** Number with its ordinal e.g., 1st, 2nd, 3rd...
 #### Parameters
 
 *   `mask` **[string][32]** Formatting mask. 
-'Y' -> 2019 (Year full)
-'y' -> 19 (Year short)
-'M' -> July (Month full)
-'m' -> Jul (Month short)
-'D' -> 01 (date padded)
-'d' -> 1 (date)
-'L' -> Monday
-'l' -> Mon
-'#' -> 1st (date with ordinal suffix: st, nd, rd or th)
-'H' -> 05 (Hours padded)
-'h' -> 5 (Hours)
-'I' -> 08 (Minutes padded)
-'i' -> 8 (Minutes)
-'S' -> 04 (Seconds padded)
-'s' -> 4 (Seconds)
+  >* 'Y' -> 2019 (Year full)
+  >* 'y' -> 19 (Year short)
+  >* 'M' -> July (Month full)
+  >* 'm' -> Jul (Month short)
+  >* 'D' -> 01 (date padded)
+  >* 'd' -> 1 (date)
+  >* 'L' -> Monday
+  >* 'l' -> Mon
+  >* '#' -> 1st (date with ordinal suffix: st, nd, rd or th)
+  >* 'H' -> 05 (Hours padded)
+  >* 'h' -> 5 (Hours)
+  >* 'I' -> 08 (Minutes padded)
+  >* 'i' -> 8 (Minutes)
+  >* 'S' -> 04 (Seconds padded)
+  >* 's' -> 4 (Seconds)
 
 #### Examples
 
