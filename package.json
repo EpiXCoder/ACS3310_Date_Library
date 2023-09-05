@@ -1,6 +1,6 @@
 {
-  "name": "js-date-library",
-  "version": "1.0.0",
+  "name": "js-date-fairy",
+  "version": "1.0.1",
   "description": "A JS date library",
   "main": "index.js",
   "directories": {
