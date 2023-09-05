@@ -23,9 +23,7 @@ Usage
 
 Here's a basic usage example:
 
-javascriptCopy code
-
-```
+```javascript
 const D = require('your-package-name');
 
 const myDate = new D(2023, 4, 6);
