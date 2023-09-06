@@ -171,64 +171,53 @@ class D {
     when() {
         const now = new Date();
     
-        // Calculate difference in milliseconds
-        let difference = this._date - now;
-    
-        if (Math.abs(difference) <= 5000) {  // 5000 milliseconds = 5 seconds
-            return 'now';
-        }
-    
-        // Constants for time conversion
-        const SECOND = 1000; // milliseconds
+        // Define our units in milliseconds
+        const SECOND = 1000;
         const MINUTE = 60 * SECOND;
         const HOUR = 60 * MINUTE;
         const DAY = 24 * HOUR;
-        const MONTH = 30.44 * DAY;  // Using the average number of days per month over a 365.25 day period
-        const YEAR = 365.25 * DAY;  // Using 365.25 to account for leap years
+        const MONTH = 30.44 * DAY; // Average day count
+        const YEAR = 365.25 * DAY; // Account for leap years
     
-        let years = 0, months = 0, days = 0, hours = 0, minutes = 0, seconds = 0;
+        // Calculate the raw difference
+        let difference = this._date.getTime() - now.getTime();
     
-        if (Math.abs(difference) >= YEAR) {
-            years = Math.floor(difference / YEAR);
-            difference -= years * YEAR;
-        }
-        if (Math.abs(difference) >= MONTH) {
-            months = Math.floor(difference / MONTH);
-            difference -= months * MONTH;
-        }
-        if (Math.abs(difference) >= DAY) {
-            days = Math.floor(difference / DAY);
-            difference -= days * DAY;
-        }
-        if (Math.abs(difference) >= HOUR) {
-            hours = Math.floor(difference / HOUR);
-            difference -= hours * HOUR;
-        }
-        if (Math.abs(difference) >= MINUTE) {
-            minutes = Math.floor(difference / MINUTE);
-            difference -= minutes * MINUTE;
-        }
-        if (Math.abs(difference) >= SECOND) {
-            seconds = Math.floor(difference / SECOND);
-            difference -= seconds * SECOND;
-        }
+        // Determine whether it's past or future
+        let timeDirection = difference > 0 ? 'from now' : 'ago';
     
-        let result = [];
-        if (years !== 0) result.push(`${Math.abs(years)} year${Math.abs(years) > 1 ? 's' : ''}`);
-        if (months !== 0) result.push(`${Math.abs(months)} month${Math.abs(months) > 1 ? 's' : ''}`);
-        if (days !== 0) result.push(`${Math.abs(days)} day${Math.abs(days) > 1 ? 's' : ''}`);
-        if (hours !== 0) result.push(`${Math.abs(hours)} hour${Math.abs(hours) > 1 ? 's' : ''}`);
-        if (minutes !== 0) result.push(`${Math.abs(minutes)} minute${Math.abs(minutes) > 1 ? 's' : ''}`);
-        if (seconds !== 0) result.push(`${Math.abs(seconds)} second${Math.abs(seconds) > 1 ? 's' : ''}`);
+        // Use absolute difference for calculation
+        difference = Math.abs(difference);
     
-        let timeDirection = this._date > now ? 'from now' : 'ago';
+        const units = [
+            { name: 'year', value: YEAR },
+            { name: 'month', value: MONTH },
+            { name: 'day', value: DAY },
+            { name: 'hour', value: HOUR },
+            { name: 'minute', value: MINUTE },
+            { name: 'second', value: SECOND }
+        ];
+    
+        const result = [];
+    
+        for (let unit of units) {
+            if (difference >= unit.value) {
+                let count = Math.floor(difference / unit.value);
+                difference -= count * unit.value;
+                result.push(`${count} ${unit.name}${count > 1 ? 's' : ''}`);
+            }
+        }
     
         return result.join(', ') + ' ' + timeDirection;
     }
+    
+    
        
 }
 
 module.exports = D;
-const myDate =  new D(2023, 8, 8)
-console.log(myDate.when())
-
+// const myDate = new D(new Date(2022, 8, 6));
+// console.log(myDate.when())
+// let now = new Date();
+// console.log("now: ", now)
+// const D2 = new D("2023-09-06")
+// console.log(D2.when())
