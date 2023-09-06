@@ -172,30 +172,56 @@ class D {
         const now = new Date();
     
         // Calculate difference in milliseconds
-        const difference = this._date - now;
+        let difference = this._date - now;
     
-        // Convert the difference into various units
-        const secondsDifference = Math.round(difference / 1000);
-        const minutesDifference = Math.round(secondsDifference / 60);
-        const hoursDifference = Math.round(minutesDifference / 60);
-        const daysDifference = Math.round(hoursDifference / 24);
-    
-        const monthsDifference = Math.round(daysDifference / 30.44); // Using the average number of days per month over a 365.25 day period
-        const yearsDifference = Math.round(daysDifference / 365.25); // Using 365.25 to account for leap years
-    
-        if (Math.abs(secondsDifference) <= 5) {
+        if (Math.abs(difference) <= 5000) {  // 5000 milliseconds = 5 seconds
             return 'now';
         }
     
-        let result = [];
-        if (yearsDifference !== 0) result.push(`${Math.abs(yearsDifference)} year${Math.abs(yearsDifference) > 1 ? 's' : ''}`);
-        if (monthsDifference % 12 !== 0) result.push(`${Math.abs(monthsDifference % 12)} month${Math.abs(monthsDifference % 12) > 1 ? 's' : ''}`);
-        if (daysDifference % 30 !== 0) result.push(`${Math.abs(daysDifference % 30)} day${Math.abs(daysDifference % 30) > 1 ? 's' : ''}`);
-        if (hoursDifference % 24 !== 0) result.push(`${Math.abs(hoursDifference % 24)} hour${Math.abs(hoursDifference % 24) > 1 ? 's' : ''}`);
-        if (minutesDifference % 60 !== 0) result.push(`${Math.abs(minutesDifference % 60)} minute${Math.abs(minutesDifference % 60) > 1 ? 's' : ''}`);
-        if (secondsDifference % 60 !== 0) result.push(`${Math.abs(secondsDifference % 60)} second${Math.abs(secondsDifference % 60) > 1 ? 's' : ''}`);
+        // Constants for time conversion
+        const SECOND = 1000; // milliseconds
+        const MINUTE = 60 * SECOND;
+        const HOUR = 60 * MINUTE;
+        const DAY = 24 * HOUR;
+        const MONTH = 30.44 * DAY;  // Using the average number of days per month over a 365.25 day period
+        const YEAR = 365.25 * DAY;  // Using 365.25 to account for leap years
     
-        let timeDirection = difference > 0 ? 'from now' : 'ago';
+        let years = 0, months = 0, days = 0, hours = 0, minutes = 0, seconds = 0;
+    
+        if (Math.abs(difference) >= YEAR) {
+            years = Math.floor(difference / YEAR);
+            difference -= years * YEAR;
+        }
+        if (Math.abs(difference) >= MONTH) {
+            months = Math.floor(difference / MONTH);
+            difference -= months * MONTH;
+        }
+        if (Math.abs(difference) >= DAY) {
+            days = Math.floor(difference / DAY);
+            difference -= days * DAY;
+        }
+        if (Math.abs(difference) >= HOUR) {
+            hours = Math.floor(difference / HOUR);
+            difference -= hours * HOUR;
+        }
+        if (Math.abs(difference) >= MINUTE) {
+            minutes = Math.floor(difference / MINUTE);
+            difference -= minutes * MINUTE;
+        }
+        if (Math.abs(difference) >= SECOND) {
+            seconds = Math.floor(difference / SECOND);
+            difference -= seconds * SECOND;
+        }
+    
+        let result = [];
+        if (years !== 0) result.push(`${Math.abs(years)} year${Math.abs(years) > 1 ? 's' : ''}`);
+        if (months !== 0) result.push(`${Math.abs(months)} month${Math.abs(months) > 1 ? 's' : ''}`);
+        if (days !== 0) result.push(`${Math.abs(days)} day${Math.abs(days) > 1 ? 's' : ''}`);
+        if (hours !== 0) result.push(`${Math.abs(hours)} hour${Math.abs(hours) > 1 ? 's' : ''}`);
+        if (minutes !== 0) result.push(`${Math.abs(minutes)} minute${Math.abs(minutes) > 1 ? 's' : ''}`);
+        if (seconds !== 0) result.push(`${Math.abs(seconds)} second${Math.abs(seconds) > 1 ? 's' : ''}`);
+    
+        let timeDirection = this._date > now ? 'from now' : 'ago';
     
         return result.join(', ') + ' ' + timeDirection;
     }
@@ -203,4 +229,6 @@ class D {
 }
 
 module.exports = D;
+const myDate =  new D(2023, 8, 8)
+console.log(myDate.when())
 
