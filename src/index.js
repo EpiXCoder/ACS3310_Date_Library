@@ -180,10 +180,15 @@ class D {
         const YEAR = 365.25 * DAY; // Account for leap years
     
         // Calculate the raw difference
-        let difference = this._date.getTime() - now.getTime();
+        let difference = this._date - now;
     
         // Determine whether it's past or future
         let timeDirection = difference > 0 ? 'from now' : 'ago';
+
+           // If the difference is less than 5 seconds or zero, return "just now"
+        if (Math.abs(difference) <= 5 * SECOND) {
+            return 'just now';
+        }
     
         // Use absolute difference for calculation
         difference = Math.abs(difference);
@@ -215,9 +220,9 @@ class D {
 }
 
 module.exports = D;
-// const myDate = new D(new Date(2022, 8, 6));
-// console.log(myDate.when())
-// let now = new Date();
-// console.log("now: ", now)
-// const D2 = new D("2023-09-06")
-// console.log(D2.when())
+const myDate = new D(new Date());
+console.log(myDate.when())
+let now = new Date();
+console.log("now: ", now)
+const D2 = new D("2023-09-06")
+console.log(D2.when())
